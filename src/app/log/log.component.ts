@@ -17,7 +17,7 @@ export class LogComponent implements OnInit {
 
   ngOnInit() {
     this.connection = this.botService.getMessages('log').subscribe(message => {
-      this.messages.push(message);
+      this.messages.unshift(message);
     })
   }
 

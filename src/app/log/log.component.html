@@ -1,6 +1,6 @@
-<p>
-  log works!
-</p>
-<div *ngFor="let message of messages">
-  {{message.text}}
+<h2>Log</h2>
+<div class="log">
+  <div class="logEntry" *ngFor="let message of messages">
+    {{message.text}}
+  </div>
 </div>

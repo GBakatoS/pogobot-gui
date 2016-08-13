@@ -1,0 +1,5 @@
+.log {
+  height: 10em;
+  overflow-y: auto;
+  border: 1px solid grey;
+}
