@@ -4,7 +4,9 @@ import { LogComponent } from './log/log.component';
 @Component({
   moduleId: module.id,
   selector: 'app-root',
-  directives: [LogComponent],
+  directives: [
+    LogComponent
+  ],
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css']
 })

@@ -9,14 +9,34 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
-   'socket.io-client' : 'vendor/socket.io-client'
+   'socket.io-client' : 'vendor/socket.io-client',
+   '@angular2-material': 'vendor/@angular2-material'
 };
 
 /** User packages configuration. */
-const packages: any = {
+let packages: any = {
   'socket.io-client' : {main: 'socket.io.js'}
 };
 
+// put the names of any of your Material components here
+const materialComponents: string[] = [
+  'core',
+  'button',
+  'card',
+  'checkbox',
+  'sidebar',
+  'icon',
+  'toolbar',
+  'list'
+];
+
+materialComponents.forEach(name => {
+  packages[`@angular2-material/${name}`] = {
+    format: 'cjs',
+    defaultExtension: 'js',
+    main: `${name}.js`,
+  };
+});
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /***********************************************************************************************
  * Everything underneath this line is managed by the CLI.
