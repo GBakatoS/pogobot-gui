@@ -15,7 +15,7 @@ export class PokebankComponent implements OnInit {
   constructor(private botService:BotService) {
   }
 
-  pokebankSorted(){
+  private sortedPokebank(){
     return this.pokebank.sort(function(pokemon1, pokemon2) {
       let comparision :number = pokemon2.date.getTime()-pokemon1.date.getTime();
       if(comparision === 0) {
@@ -37,20 +37,24 @@ export class PokebankComponent implements OnInit {
       this.pokebank.push(new Pokemon(pokemon.id, pokemon.pokemonId, pokemon.name, pokemon.cp,
         pokemon.iv, pokemon.stats, PokemonStatus.Old, 0,0));
     }
+    this.pokebank=this.sortedPokebank();
   }
   private newPokemon(message: any){
     this.pokebank.push(new Pokemon(message['id'], message['pokemonId'], message['name'], message['cp'],
       message['iv'], message['stats'], PokemonStatus.New, message['lat'], message['lng']));
+    this.pokebank=this.sortedPokebank();
   }
   private releasePokemon(message: any){
+    /*console.log(message);
     for(let pokemon of this.pokebank) {
-      //does not work, ID on catched Pokemon is always 0
-      //console.log(pokemon.id + " === "+ message['id']);
-      if(pokemon.id === message['id']) {
-        //console.log(pokemon);
+
+      if(pokemon.pokemonId === message['pokemonId'] && pokemon.cp === message['cp']
+        && pokemon.iv === message['iv'] && pokemon.name === message['name']) {
+        console.log(pokemon);
         pokemon.status=PokemonStatus.Released;
+        return;
       }
-    }
+    }*/
   }
 
   ngOnInit() {

@@ -1,15 +1,31 @@
 <h1>Map</h1>
 <sebm-google-map [latitude]="lat" [longitude]="lng">
-  <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+  <sebm-google-map-marker
+    [latitude]="lat"
+    [longitude]="lng"
+    [iconUrl]="playerIconURL">
+  </sebm-google-map-marker>
+
   <sebm-google-map-marker
     *ngFor="let pokemon of pokebank"
     [latitude]="pokemon.lat"
     [longitude]="pokemon.lng"
     [title]="pokemon.name"
     [iconUrl]="pokemon.iconURL">
-  <sebm-google-map-info-window>
-    <h2>{{pokemon.name}}</h2>
-    {{pokemon.stats}}
-  </sebm-google-map-info-window>
-</sebm-google-map-marker>
+    <sebm-google-map-info-window>
+      <h2>{{pokemon.name}}</h2>
+      {{pokemon.stats}}
+    </sebm-google-map-info-window>
+  </sebm-google-map-marker>
+
+  <sebm-google-map-marker
+    *ngFor="let pokeStop of pokeStops"
+    [latitude]="pokeStop.lat"
+    [longitude]="pokeStop.lng"
+    [title]="pokeStop.name"
+    [iconUrl]="pokeStopIconURL">
+    <sebm-google-map-info-window>
+      <h2>{{pokeStop.name}}</h2>
+    </sebm-google-map-info-window>
+  </sebm-google-map-marker>
 </sebm-google-map>
