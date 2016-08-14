@@ -22,20 +22,20 @@ export class LogComponent implements OnInit {
 
   ngOnInit() {
     this.connection = this.botService.getMessages('log').subscribe(message => {
-      let logEntry: LogEntry = new LogEntry(message.message, message.type);
+      let logEntry: LogEntry = new LogEntry(message['text'], message['type']);
       this.messages.unshift(logEntry);
     })
   }
 
 }
-private class LogEntry {
+class LogEntry {
   type: String;
-  message: String;
+  text: String;
   date: Date;
 
-  constructor(message:String, type:String) {
+  constructor(text:String, type:String) {
     this.type = type;
-    this.message = message;
+    this.text = text;
     this.date = new Date();
   }
 }

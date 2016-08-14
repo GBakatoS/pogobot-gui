@@ -1,7 +1,7 @@
 <h2>Log</h2>
 <div class="log">
   <div class="logEntry" *ngFor="let message of messages">
-    <time>{{message.date | amDateFormat:'LT'}}</time> - 
+    <time>{{message.date | amDateFormat:'LT'}}</time> -
     <span class="message-{{message.type}}">
       {{message.text}}
     </span>
