@@ -20,4 +20,8 @@ export class BotService {
     return observable;
   }
 
+  init() {
+    this.socket.emit('init');
+  }
+
 }

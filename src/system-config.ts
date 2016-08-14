@@ -62,6 +62,7 @@ const barrels: string[] = [
   'app',
   'app/shared',
   'app/log',
+  'app/pokebank',
   /** @cli-barrel */
 ];
 
