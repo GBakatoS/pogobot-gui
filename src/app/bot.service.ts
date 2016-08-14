@@ -7,16 +7,16 @@ export class BotService {
   private url = 'http://localhost:8001';
   private socket;
 
-  constructor(){
+  constructor() {
    this.socket = io(this.url);
   }
 
-  getMessages(messageType:String) {
+  getMessages(messageType: String) {
     let observable = new Observable(observer => {
       this.socket.on(messageType, (data) => {
         observer.next(data);
       });
-    })
+    });
     return observable;
   }
 

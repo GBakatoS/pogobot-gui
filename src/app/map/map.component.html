@@ -1,0 +1,15 @@
+<h1>Map</h1>
+<sebm-google-map [latitude]="lat" [longitude]="lng">
+  <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+  <sebm-google-map-marker
+    *ngFor="let pokemon of pokebank"
+    [latitude]="pokemon.lat"
+    [longitude]="pokemon.lng"
+    [title]="pokemon.name"
+    [iconUrl]="pokemon.iconURL">
+  <sebm-google-map-info-window>
+      {{pokemon.stats}}
+  </sebm-google-map-info-window>
+
+</sebm-google-map-marker>
+</sebm-google-map>

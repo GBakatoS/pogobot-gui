@@ -10,6 +10,7 @@ import {MdSidenavModule} from '@angular2-material/sidenav/sidenav';
 import {MdCardModule} from '@angular2-material/card/card';
 import {MdIconModule} from '@angular2-material/icon/icon';
 import {MdToolbarModule} from '@angular2-material/toolbar/toolbar';
+import {GOOGLE_MAPS_PROVIDERS} from 'angular2-google-maps/core';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import {MdToolbarModule} from '@angular2-material/toolbar/toolbar';
     MdSidenavModule,
     MdToolbarModule
   ],
+  providers: [GOOGLE_MAPS_PROVIDERS],
   declarations: [AppComponent],
   entryComponents: [AppComponent],
 })

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BotService } from '../bot.service';
+import { Pokemon, PokemonStatus } from '../pokemon';
 
 @Component({
   moduleId: module.id,
@@ -30,58 +31,39 @@ export class PokebankComponent implements OnInit {
     })
   }
 
+  private updatePokebank(message: any) {
+    this.pokebank= [];
+    for(let pokemon of message['pokemon']) {
+      this.pokebank.push(new Pokemon(pokemon.id, pokemon.pokemonId, pokemon.name, pokemon.cp,
+        pokemon.iv, pokemon.stats, PokemonStatus.Old, 0,0));
+    }
+  }
+  private newPokemon(message: any){
+    this.pokebank.push(new Pokemon(message['id'], message['pokemonId'], message['name'], message['cp'],
+      message['iv'], message['stats'], PokemonStatus.New, message['lat'], message['lng']));
+  }
+  private releasePokemon(message: any){
+    for(let pokemon of this.pokebank) {
+      //does not work, ID on catched Pokemon is always 0
+      //console.log(pokemon.id + " === "+ message['id']);
+      if(pokemon.id === message['id']) {
+        //console.log(pokemon);
+        pokemon.status=PokemonStatus.Released;
+      }
+    }
+  }
 
   ngOnInit() {
     this.botService.getMessages('pokebank').subscribe(message => {
-      this.pokebank= [];
-      for(let pokemon of message['pokemon']) {
-        this.pokebank.push(new Pokemon(pokemon.id, pokemon.pokemonId, pokemon.name, pokemon.cp,
-          pokemon.iv, pokemon.stats, PokemonStatus.Old, 0,0));
-      }
+      this.updatePokebank(message);
     });
     this.botService.getMessages('newPokemon').subscribe(message => {
-      console.log(message);
-      this.pokebank.push(new Pokemon(message['id'], message['pokemonId'], message['name'], message['cp'],
-        message['iv'], message['stats'], PokemonStatus.New, message['lat'], message['lng']));
+        this.newPokemon(message);
     });
     this.botService.getMessages('releasePokemon').subscribe(message => {
-      for(let pokemon of this.pokebank) {
-        console.log(pokemon.id + " === "+ message['id']);
-        if(pokemon.id === message['id']) {
-          console.log(pokemon);
-          pokemon.status=PokemonStatus.Released;
-        }
-      }
+        this.releasePokemon(message);
     });
     this.botService.init();
   }
 
-}
-enum PokemonStatus {Old, New, Released};
-class Pokemon {
-
-  id :number;
-  pokemonId :number;
-  name :String;
-  cp :number;
-  iv :number;
-  stats :String;
-  lat :number;
-  lng :number;
-  status:PokemonStatus;
-  date: Date;
-
-  constructor(id :number, pokemonId :number,  name :String,  cp :number,
-    iv :number,  stats :String, status:PokemonStatus,  lat :number,  lng :number) {
-    this.date = new Date();
-    this.id = id;
-    this.pokemonId = pokemonId;
-    this.name =name;
-    this.cp =cp;
-    this.iv =iv;
-    this.stats = stats;
-    this.lat = lat;
-    this.lng = lng;
-    this.status = status;
-  }
 }
