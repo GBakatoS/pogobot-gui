@@ -3,3 +3,12 @@
   overflow-y: auto;
   border: 1px solid grey;
 }
+.message-green {
+  background-color: green;
+}
+.message-yellow {
+  background-color: yellow;
+}
+.message-magenta {
+  background-color: magenta;
+}

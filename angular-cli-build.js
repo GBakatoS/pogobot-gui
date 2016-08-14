@@ -17,7 +17,9 @@ module.exports = function(defaults) {
       'rxjs/**/*.+(js|js.map)',
       '@angular/**/*.+(js|js.map)',
       'socket.io-client/socket.io.js',
-      '@angular2-material/**/*'
+      '@angular2-material/**/*',
+      'angular2-moment/*.+(js|js.map)',
+      'moment/moment.js'
     ]
   });
 };

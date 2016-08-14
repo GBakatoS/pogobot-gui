@@ -10,12 +10,15 @@
 /** Map relative paths to URLs. */
 const map: any = {
    'socket.io-client' : 'vendor/socket.io-client',
-   '@angular2-material': 'vendor/@angular2-material'
+   '@angular2-material': 'vendor/@angular2-material',
+   'angular2-moment': 'vendor/angular2-moment',
+   'moment': 'vendor/moment/moment.js'
 };
 
 /** User packages configuration. */
 let packages: any = {
-  'socket.io-client' : {main: 'socket.io.js'}
+  'socket.io-client' : {main: 'socket.io.js'},
+  'angular2-moment': {main: 'index.js'},
 };
 
 // put the names of any of your Material components here
