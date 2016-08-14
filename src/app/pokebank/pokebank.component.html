@@ -1,0 +1,10 @@
+<h2>Pokebank</h2>
+<div class="pokebank">
+  <md-card *ngFor="let pokemon of pokebankSorted()" class=pokemonStatus-{{pokemon.status}}>
+      <img md-card-image [alt]="pokemon.name" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.pokemonId}}.png">
+      <md-card-title>{{pokemon.name}}</md-card-title>
+      <md-card-content class="secondary">
+        {{pokemon.stats}}
+      </md-card-content>
+    </md-card>
+</div>

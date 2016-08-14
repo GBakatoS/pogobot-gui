@@ -12,13 +12,18 @@ const map: any = {
    'socket.io-client' : 'vendor/socket.io-client',
    '@angular2-material': 'vendor/@angular2-material',
    'angular2-moment': 'vendor/angular2-moment',
-   'moment': 'vendor/moment/moment.js'
+   'moment': 'vendor/moment/moment.js',
+   'angular2-google-maps': 'vendor/angular2-google-maps'
 };
 
 /** User packages configuration. */
 let packages: any = {
   'socket.io-client' : {main: 'socket.io.js'},
   'angular2-moment': {main: 'index.js'},
+  'angular2-google-maps/core': {
+    defaultExtension: 'js',
+    main: 'index.js' // you can also use core.umd.js here, if you want faster loads
+  }
 };
 
 // put the names of any of your Material components here
