@@ -12,19 +12,19 @@ import { Pokemon, PokemonStatus } from '../pokemon';
   providers: [BotService]
 })
 export class MapComponent implements OnInit {
-  private lat: number = 0;
-  private lng: number = 0;
+  lat: number = 0;
+  lng: number = 0;
   private pokebank: Pokemon[]= [];
 
   constructor(private botService:BotService) {
   }
 
   ngOnInit() {
-    this.botService.getMessages('setLocation').subscribe(message => {
+    this.botService.getMessages('newLocation').subscribe(message => {
       this.lat = message['lat'];
       this.lng = message['lng'];
     });
-    this.botService.getMessages('sendPokestop').subscribe(message => {
+    this.botService.getMessages('pokestop').subscribe(message => {
         console.log(message);
     });
     this.botService.getMessages('newPokemon').subscribe(message => {
