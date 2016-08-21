@@ -8,7 +8,16 @@ export class BotService {
   private socket;
 
   constructor() {
-   this.socket = io(this.url);
+    this.socket = io(this.url);
+  }
+
+  getPoke(messageType: String) {
+    let observable = new Observable(observer => {
+      this.socket.on(messageType, (data) => {
+        observer.next(data);
+      });
+    });
+    return observable;
   }
 
   getMessages(messageType: String) {

@@ -15,9 +15,9 @@ import * as moment from 'moment'
 })
 export class LogComponent implements OnInit {
   messages = [];
-  connection :Subscription;
+  connection: Subscription;
 
-  constructor(private botService:BotService, private ref: ChangeDetectorRef) {
+  constructor(private botService: BotService, private ref: ChangeDetectorRef) {
   }
 
 
@@ -36,7 +36,7 @@ class LogEntry {
   text: String;
   dateString: String;
 
-  constructor(text:String, type:String) {
+  constructor(text: String, type: String) {
     this.type = type;
     this.text = text;
     this.dateString = moment().format('LT');
