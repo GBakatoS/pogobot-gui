@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { BotService } from '../bot.service';
-import { Pokemon, PokemonStatus } from '../pokemon';
+import { Pokemon } from '../pokemon';
+import {
+  TableOptions,
+  TableColumn,
+  ColumnMode
+} from 'angular2-data-table';
 
 @Component({
   moduleId: module.id,
@@ -12,39 +17,33 @@ import { Pokemon, PokemonStatus } from '../pokemon';
 export class PokebankComponent implements OnInit {
 
   pokebank: Pokemon[]= [];
-  constructor(private botService:BotService) {
-  }
+  tableOptions = new TableOptions({
+    columnMode: ColumnMode.force,
+    headerHeight: 50,
+    footerHeight: 50,
+    rowHeight: 'auto',
+    columns: [
+      new TableColumn({ prop: 'name' }),
+      new TableColumn({ name: 'cp' }),
+      new TableColumn({ name: 'iv' }),
+      new TableColumn({ name: 'maxCp' }),
+    ]
+  });
 
-  private sortedPokebank(){
-    return this.pokebank.sort(function(pokemon1, pokemon2) {
-      let comparision :number = pokemon2.date.getTime()-pokemon1.date.getTime();
-      if(comparision === 0) {
-          comparision = pokemon2.iv-pokemon1.iv;
-      }
-      if(comparision === 0) {
-        comparision = pokemon2.cp-pokemon1.cp;
-      }
-      if(comparision === 0) {
-        comparision = pokemon2.id-pokemon1.id;
-      }
-      return comparision;
-    })
+  constructor(private botService:BotService) {
   }
 
   private updatePokebank(message: any) {
     this.pokebank= [];
     for(let pokemon of message['pokemon']) {
-      this.pokebank.push(new Pokemon(pokemon.id, pokemon.pokemonId, pokemon.name, pokemon.cp,
-        pokemon.iv, pokemon.stats, PokemonStatus.Old, 0,0));
+      this.pokebank.push(pokemon);
     }
-    this.pokebank=this.sortedPokebank();
   }
   private newPokemon(message: any){
-    this.pokebank.push(new Pokemon(message['id'], message['pokemonId'], message['name'], message['cp'],
-      message['iv'], message['stats'], PokemonStatus.New, message['lat'], message['lng']));
-    this.pokebank=this.sortedPokebank();
+    this.pokebank.push(new Pokemon(message));
   }
   private releasePokemon(message: any){
+    console.log(message);
     /*console.log(message);
     for(let pokemon of this.pokebank) {
 

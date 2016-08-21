@@ -11,6 +11,7 @@ import {MdCardModule} from '@angular2-material/card/card';
 import {MdIconModule} from '@angular2-material/icon/icon';
 import {MdToolbarModule} from '@angular2-material/toolbar/toolbar';
 import {GOOGLE_MAPS_PROVIDERS} from 'angular2-google-maps/core';
+import { Angular2DataTableModule } from 'angular2-data-table';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import {GOOGLE_MAPS_PROVIDERS} from 'angular2-google-maps/core';
     MdIconModule,
     MdListModule,
     MdSidenavModule,
-    MdToolbarModule
+    MdToolbarModule,
+    Angular2DataTableModule
   ],
   providers: [GOOGLE_MAPS_PROVIDERS],
   declarations: [AppComponent],

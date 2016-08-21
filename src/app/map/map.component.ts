@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GOOGLE_MAPS_DIRECTIVES } from 'angular2-google-maps/core';
 import { BotService } from '../bot.service';
-import { Pokemon, PokemonStatus } from '../pokemon';
+import { Pokemon } from '../pokemon';
 
 @Component({
   moduleId: module.id,
@@ -35,8 +35,7 @@ export class MapComponent implements OnInit {
     });
   }
   private newPokemon(message: any){
-    this.pokebank.push(new Pokemon(message['id'], message['pokemonId'], message['name'], message['cp'],
-      message['iv'], message['stats'], PokemonStatus.New, message['lat'], message['lng']));
+    this.pokebank.push(new Pokemon(message));
   }
   private newPokeStop(message: any){
     this.pokeStops.push(new PokeStop(message['id'], message['name'],

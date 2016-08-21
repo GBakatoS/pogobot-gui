@@ -1,10 +1,13 @@
 <h2>Pokebank</h2>
 <div class="pokebank">
-  <md-card *ngFor="let pokemon of pokebank" class=pokemonStatus-{{pokemon.status}}>
-      <img md-card-image [alt]="pokemon.name" src="{{pokemon.iconURL}}">
-      <md-card-title>{{pokemon.name}}</md-card-title>
-      <md-card-content class="secondary">
-        {{pokemon.stats}}
-      </md-card-content>
-    </md-card>
+  <datatable
+          class='material'
+          [rows]='pokebank'
+          [options]='tableOptions'>
+  <datatable-column name="iconURL">
+    <template let-value="value">
+    <img src={{value}}/>
+    </template>
+  </datatable-column>
+  </datatable>
 </div>

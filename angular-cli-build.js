@@ -20,7 +20,8 @@ module.exports = function(defaults) {
       '@angular2-material/**/*',
       'angular2-moment/*.+(js|js.map)',
       'moment/moment.js',
-      'angular2-google-maps/**/*.+(js|js.map)'
+      'angular2-google-maps/**/*.+(js|js.map)',
+      'angular2-data-table/**/*.+(js|js.map)'
     ]
   });
 };
