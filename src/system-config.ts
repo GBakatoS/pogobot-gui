@@ -9,25 +9,25 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
-   'socket.io-client' : 'vendor/socket.io-client',
-   '@angular2-material': 'vendor/@angular2-material',
-   'angular2-moment': 'vendor/angular2-moment',
-   'moment': 'vendor/moment/moment.js',
-   'angular2-google-maps': 'vendor/angular2-google-maps',
-   'angular2-data-table': 'vendor/angular2-data-table/release',
+  'socket.io-client': 'vendor/socket.io-client',
+  '@angular2-material': 'vendor/@angular2-material',
+  'angular2-moment': 'vendor/angular2-moment',
+  'moment': 'vendor/moment/moment.js',
+  'angular2-google-maps': 'vendor/angular2-google-maps',
+  'angular2-data-table': 'vendor/angular2-data-table/release',
 };
 
 /** User packages configuration. */
 let packages: any = {
-  'socket.io-client' : {main: 'socket.io.js'},
-  'angular2-moment': {main: 'index.js'},
+  'socket.io-client': { main: 'socket.io.js' },
+  'angular2-moment': { main: 'index.js' },
   'angular2-google-maps/core': {
     defaultExtension: 'js',
     main: 'index.js' // you can also use core.umd.js here, if you want faster loads
   },
   'vendor/angular2-data-table/release': {
-      defaultExtension: 'js',
-      main: 'angular2-data-table.cjs.js'
+    defaultExtension: 'js',
+    main: 'angular2-data-table.cjs.js'
   }
 };
 
