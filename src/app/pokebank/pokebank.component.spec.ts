@@ -8,7 +8,7 @@ import { BotService } from '../bot.service';
 
 describe('Component: Pokebank', () => {
   it('should create an instance', () => {
-    let component = new PokebankComponent(new BotService());
+    let component = new PokebankComponent(new BotService(), null);
     expect(component).toBeTruthy();
   });
 });

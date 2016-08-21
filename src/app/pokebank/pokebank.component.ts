@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { BotService } from '../bot.service';
 import { Pokemon } from '../pokemon';
 import {
@@ -12,11 +12,12 @@ import {
   selector: 'pokebank',
   templateUrl: 'pokebank.component.html',
   styleUrls: ['pokebank.component.css'],
-  providers: [BotService]
+  providers: [BotService],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PokebankComponent implements OnInit {
 
-  pokebank: Pokemon[]= [];
+  pokebank: Pokemon[] = [];
   tableOptions = new TableOptions({
     columnMode: ColumnMode.force,
     headerHeight: 50,
@@ -30,19 +31,21 @@ export class PokebankComponent implements OnInit {
     ]
   });
 
-  constructor(private botService:BotService) {
+  constructor(private botService: BotService, private ref: ChangeDetectorRef) {
   }
 
   private updatePokebank(message: any) {
-    this.pokebank= [];
-    for(let pokemon of message['pokemon']) {
+    this.pokebank = [];
+    for (let pokemon of message['pokemon']) {
       this.pokebank.push(pokemon);
     }
+    this.ref.markForCheck();
   }
-  private newPokemon(message: any){
+  private newPokemon(message: any) {
     this.pokebank.push(new Pokemon(message));
+    this.ref.markForCheck();
   }
-  private releasePokemon(message: any){
+  private releasePokemon(message: any) {
     console.log(message);
     /*console.log(message);
     for(let pokemon of this.pokebank) {
@@ -61,10 +64,10 @@ export class PokebankComponent implements OnInit {
       this.updatePokebank(message);
     });
     this.botService.getMessages('newPokemon').subscribe(message => {
-        this.newPokemon(message);
+      this.newPokemon(message);
     });
     this.botService.getMessages('releasePokemon').subscribe(message => {
-        this.releasePokemon(message);
+      this.releasePokemon(message);
     });
     this.botService.init();
   }

@@ -8,7 +8,7 @@ import { BotService } from '../bot.service';
 
 describe('Component: Log', () => {
   it('should create an instance', () => {
-    let component = new LogComponent(new BotService());
+    let component = new LogComponent(new BotService(), null);
     expect(component).toBeTruthy();
   });
 });
