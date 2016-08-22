@@ -1,5 +1,5 @@
-<h1>Map</h1>
-<sebm-google-map [latitude]="lat" [longitude]="lng">
+<sebm-google-map [latitude]="lat" [longitude]="lng"
+  (mapRightClick)="walkTo($event)">
   <sebm-google-map-marker
     [latitude]="lat"
     [longitude]="lng"
@@ -12,6 +12,12 @@
     [longitude]="point.lng">
     </sebm-google-map-polyline-point>
   </sebm-google-map-polyline>
+
+  <sebm-google-map-marker
+    *ngFor="let goToPoint of goToPoints"
+    [latitude]="goToPoint.lat"
+    [longitude]="goToPoint.lng">
+  </sebm-google-map-marker>
 
   <sebm-google-map-marker
     *ngFor="let pokemon of pokebank"

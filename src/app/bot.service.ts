@@ -11,7 +11,7 @@ export class BotService {
     this.socket = io(this.url);
   }
 
-  getPoke(messageType: String) {
+  getMessages(messageType: String) {
     let observable = new Observable(observer => {
       this.socket.on(messageType, (data) => {
         observer.next(data);
@@ -20,13 +20,11 @@ export class BotService {
     return observable;
   }
 
-  getMessages(messageType: String) {
-    let observable = new Observable(observer => {
-      this.socket.on(messageType, (data) => {
-        observer.next(data);
-      });
+  goTo(lat: number, lng: number) {
+    this.socket.emit('goto', {
+      lat: lat,
+      lng: lng
     });
-    return observable;
   }
 
   init() {
