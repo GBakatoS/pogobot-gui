@@ -6,6 +6,13 @@
     [iconUrl]="playerIconURL">
   </sebm-google-map-marker>
 
+  <sebm-google-map-polyline>
+    <sebm-google-map-polyline-point *ngFor="let point of path"
+    [latitude]="point.lat"
+    [longitude]="point.lng">
+    </sebm-google-map-polyline-point>
+  </sebm-google-map-polyline>
+
   <sebm-google-map-marker
     *ngFor="let pokemon of pokebank"
     [latitude]="pokemon.lat"
