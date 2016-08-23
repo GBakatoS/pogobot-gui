@@ -8,7 +8,7 @@ import { BotService } from '../bot.service';
 
 describe('Component: Map', () => {
   it('should create an instance', () => {
-    let component = new MapComponent(new BotService());
+    let component = new MapComponent(new BotService(), null);
     expect(component).toBeTruthy();
   });
 });

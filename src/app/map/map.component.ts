@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { GOOGLE_MAPS_DIRECTIVES, MouseEvent } from 'angular2-google-maps/core';
 import { BotService } from '../bot.service';
 import { Pokemon } from '../pokemon';
@@ -9,7 +9,8 @@ import { Pokemon } from '../pokemon';
   templateUrl: 'map.component.html',
   styleUrls: ['map.component.css'],
   directives: [GOOGLE_MAPS_DIRECTIVES],
-  providers: [BotService]
+  providers: [BotService],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MapComponent implements OnInit {
   private lat: number = 0;
@@ -21,7 +22,7 @@ export class MapComponent implements OnInit {
   private pokebank: Pokemon[] = [];
   private pokeStops: PokeStop[] = [];
 
-  constructor(private botService: BotService) {
+  constructor(private botService: BotService, private ref: ChangeDetectorRef) {
   }
 
   ngOnInit() {
@@ -29,12 +30,15 @@ export class MapComponent implements OnInit {
       this.lat = message['lat'];
       this.lng = message['lng'];
       this.path.push(new GPSPoint(message));
+      this.ref.markForCheck();
     });
     this.botService.getMessages('pokestop').subscribe(message => {
       this.newPokeStop(message);
+      this.ref.markForCheck();
     });
     this.botService.getMessages('newPokemon').subscribe(message => {
       this.newPokemon(message);
+      this.ref.markForCheck();
     });
   }
   private newPokemon(message: any) {

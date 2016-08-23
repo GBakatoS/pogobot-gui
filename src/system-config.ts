@@ -35,12 +35,8 @@ let packages: any = {
 const materialComponents: string[] = [
   'core',
   'button',
-  'card',
-  'checkbox',
-  'sidebar',
   'icon',
-  'toolbar',
-  'list'
+  'tab'
 ];
 
 materialComponents.forEach(name => {

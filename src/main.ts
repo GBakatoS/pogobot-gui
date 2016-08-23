@@ -4,12 +4,8 @@ import {NgModule, ApplicationRef} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import { AppComponent, environment } from './app/';
 import {MdButtonModule} from '@angular2-material/button/button';
-import {MdCheckboxModule} from '@angular2-material/checkbox/checkbox';
-import {MdListModule} from '@angular2-material/list/list';
-import {MdSidenavModule} from '@angular2-material/sidenav/sidenav';
-import {MdCardModule} from '@angular2-material/card/card';
 import {MdIconModule} from '@angular2-material/icon/icon';
-import {MdToolbarModule} from '@angular2-material/toolbar/toolbar';
+import {MdTabsModule} from '@angular2-material/tabs/tabs'
 import {GOOGLE_MAPS_PROVIDERS} from 'angular2-google-maps/core';
 import { Angular2DataTableModule } from 'angular2-data-table';
 
@@ -17,12 +13,8 @@ import { Angular2DataTableModule } from 'angular2-data-table';
   imports: [
     BrowserModule,
     MdButtonModule,
-    MdCardModule,
-    MdCheckboxModule,
     MdIconModule,
-    MdListModule,
-    MdSidenavModule,
-    MdToolbarModule,
+    MdTabsModule,
     Angular2DataTableModule
   ],
   providers: [GOOGLE_MAPS_PROVIDERS],
