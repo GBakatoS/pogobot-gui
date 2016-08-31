@@ -3,7 +3,7 @@ sudo: required
 node_js:
   - "6"
 before_install:
-  - "npm install -g angular-cli"
+  - "npm install -g angular-cli@1.0.0-beta.11-webpack.8"
   - "npm install -g typings"
 install:
   - "npm install"
