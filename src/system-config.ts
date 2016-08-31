@@ -32,7 +32,7 @@ let packages: any = {
 };
 
 // put the names of any of your Material components here
-const materialComponents: string[] = [
+const materialPkgs: string[] = [
   'core',
   'button',
   'icon',
