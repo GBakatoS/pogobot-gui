@@ -39,12 +39,8 @@ const materialComponents: string[] = [
   'tab'
 ];
 
-materialComponents.forEach(name => {
-  packages[`@angular2-material/${name}`] = {
-    format: 'cjs',
-    defaultExtension: 'js',
-    main: `${name}.js`,
-  };
+materialPkgs.forEach((pkg) => {
+  packages[`@angular2-material/${pkg}`] = {main: `${pkg}.js`};
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /***********************************************************************************************
