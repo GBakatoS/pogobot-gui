@@ -9,4 +9,3 @@ install:
   - "npm install"
   - "typings install"
   - "ng build"
-  - "ng github-pages:deploy"
